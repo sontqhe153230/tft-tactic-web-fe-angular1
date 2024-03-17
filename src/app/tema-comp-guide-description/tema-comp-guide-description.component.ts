@@ -15,7 +15,11 @@ import Swal from 'sweetalert2';
 })
 export class TemaCompGuideDescriptionComponent {
 
-  constructor( public teamcompService: TeamCompServiceService,  private router: Router, private route2: ActivatedRoute) { }
+  constructor( public teamcompService: TeamCompServiceService,  private router: Router, private route2: ActivatedRoute) {
+
+    const today = new Date();
+    this.todayDate = today.toISOString().split('T')[0];
+   }
 
 
   TeamComp: TeamComp[] = [];
@@ -121,7 +125,7 @@ export class TemaCompGuideDescriptionComponent {
   });
  }
  newTeamComp: TeamComp |undefined
- 
+ todayDate: string;
  SaveData(){
   this.newTeamComp=this.teamcompService.getNewTeamComp();
   let idComp=this.getRandomNumber(0,9999999);
@@ -141,6 +145,7 @@ export class TemaCompGuideDescriptionComponent {
     this.newTeamComp.playstyle=this.DefaultOption;
     this.newTeamComp.rate_of_difficul=this.DifficultyOption;
     this.newTeamComp.idComp=idComp;
+    this.newTeamComp.updatedAt=this.todayDate
     this.teamcompService.setNewTeamComp(this.newTeamComp);
     Swal.fire({
       title: 'Success!',

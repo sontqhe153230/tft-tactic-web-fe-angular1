@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     });
     this.teamcompService.getTeamComp().subscribe(data => {
       this.TeamComp = data;
-     
+     console.log(data);
     });
     this.itemService.getItem().subscribe(data => {
       this.item = data;

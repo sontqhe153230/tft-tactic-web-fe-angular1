@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="c1">
+        <div class="c2">
+            <div class="c3">General Info</div>
+            <div class="c4">Summarize how your team comp works, such as its core synergies and win conditions
+            </div>
+        </div>
+    </div>
+    <div class="c5">
+        <form [formGroup]="Note" (ngSubmit)="SaveData()" class="c6">
+            <div class="c7">
+                <div class="c36">
+                    <div class="c37"><label for="generalInfo" class="c38">Plan Note</label><img
+                            src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/info.svg" alt="info"
+                            class="c39" data-tippy-trigger-hover=""></div><textarea class="c40" id="generalInfo"
+                        maxlength="320" rows="1" placeholder="Describe your team comp and how it works"
+                        name="PlanNote"formControlName="PlanNote" required=""></textarea>
+                </div>
+                
+            </div>
+            <div class="c41">
+                <div class="c42">
+                    <div class="c43"><button  type="submit" class="c44"><span class="c45">Next
+                                step</span></button></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

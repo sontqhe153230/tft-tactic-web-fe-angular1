@@ -1,0 +1,237 @@
+<div class="container">
+    <div class="c1">
+        <div class="c2">
+            <div class="c3">
+                <div class="c4">
+                    <header class="c4-1">
+                        <h1 class="c4-2">TFT Comp Builder - Create &amp; Share</h1>
+                        <div class="c4-3">
+                            <div class="c4-6" data-tippy-trigger-hover="">
+                                <button (click)="RedirectToGuideDescription()" class="c4-7"><span class="c4-8">Create guide</span></button>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="c5">
+                        <div class="SynergyActivePlace">
+                            <div class="s1">
+                                <ng-container *ngIf="style.length>0">
+                                    <ng-template ngFor let-item [ngForOf]="style">
+                                        <div [class]="GetClassBaseOnHeadliner(item.headliner,item.name)">
+                                            <div class="s1-3"
+                                                [style]="GetBackGroundWhenActive(item.style,item.headliner,item.name)">
+                                                <div class="s1-4">
+                                                    <div class="s1-5" [style]="GetBackGroundByTrait(item.style)"><svg
+                                                            viewBox="0 0 22 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg" class="s1-6">
+                                                            <path
+                                                                d="M1 17.7098V6.29016L11 0.575876L21 6.29016V17.7098L11 23.4241L1 17.7098Z"
+                                                                fill="transparent" stroke="" stroke-width="1"></path>
+                                                        </svg><img [src]="GetTraitByName(item.name)" alt="HEARTSTEEL"
+                                                            class="s1-7" [style]="GetFilterByActive(item.style)"></div>
+                                                </div>
+                                                <div class="s1-8">{{item.numberActive}}</div>
+                                                <div>
+                                                    <div class="s1-9">{{item.name.replace("Set10_","")}}</div>
+                                                    <div>
+                                                        <ng-template ngFor let-item
+                                                            [ngForOf]="GetNumberActiveTrait(item.name)">
+                                                            <span class="s1-10">{{item}} </span>
+
+                                                        </ng-template>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+
+                            </div>
+                        </div>
+                        <div class="ChampionPlace">
+                            <div class="cp1">
+                                <ng-container *ngFor="let i of [].constructor(28); let index = index">
+                                    <div class="cp2" (dragover)="onDragOver($event,index)" (drop)="onDrop($event,index)"
+                                        (dblclick)="RemoveItem(index)">
+                                        <div class="cp3">
+                                            <div class="cp4">
+                                                <ng-container
+                                                    *ngIf="GetTraitByItemSelected(index)!=null&&GetTraitByItemSelected(index)!=undefined">
+                                                    <ng-template ngFor let-item
+                                                        [ngForOf]="GetTraitByItemSelected(index)">
+                                                        <div [ngClass]="GetClassWhenActiveHeadliner(index,item)"
+                                                            (click)="toggleClass(index,item)"><img
+                                                                [src]="GetUrlBySet(item)" alt="HEARTSTEEL"
+                                                                [style]="GetActiveStyle(item)" class="cp4-3"></div>
+                                                    </ng-template>
+
+
+                                                </ng-container>
+                                                <svg width="84px" height="96px" viewBox="0 0 84 96" class="cp5">
+                                                    <defs>
+                                                        <clipPath id="myMask">
+                                                            <polygon
+                                                                points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                transform="translate(-184, 0)"></polygon>
+                                                        </clipPath>
+                                                        <linearGradient id="headlinerSynergyGradient" x1="0%" y1="0%"
+                                                            x2="100%" y2="0%" width="38px" height="42px"
+                                                            gradientTransform="rotate(65)">
+                                                            <stop offset="0.0674318" stop-color="#7157CE"></stop>
+                                                            <stop offset="0.105504" stop-color="#6FB1BA"></stop>
+                                                            <stop offset="0.172706" stop-color="#6487F9"></stop>
+                                                            <stop offset="0.221906" stop-color="#9978C9"></stop>
+                                                            <stop offset="0.350065" stop-color="#C74DE0"></stop>
+                                                            <stop offset="0.464531" stop-color="#FCD17C"></stop>
+                                                            <stop offset="0.54849" stop-color="#67BE46"></stop>
+                                                            <stop offset="0.707406" stop-color="#FCD17C"></stop>
+                                                            <stop offset="0.85713" stop-color="#82B8D8"></stop>
+                                                            <stop offset="1" stop-color="#C74DE0"></stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <image *ngIf="getUrlWhendrop(index)!=''"
+                                                        [attr.href]="getUrlWhendrop(index)" width="100" height="100"
+                                                        x="-4" y="-2" clip-path="url(#myMask)"
+                                                        transform="translate(0, 0)"></image>
+
+                                                    <path stroke="none" stroke-width="4" fill="var(--general-base-500)"
+                                                        d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                        transform="translate(-184, 0)" id="slot-overlay-icon"></path>
+
+
+                                                    <path [attr.stroke]="GetStyleWhenDrop(index)" stroke-width="4"
+                                                        fill="none" class="slot-border"
+                                                        d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                        transform="translate(-184, 0)"></path>
+
+
+                                                </svg>
+                                            </div>
+                                            <div class="cp6">
+                                                <ng-container *ngIf="GetItemByIndex(index).length>0">
+                                                    <ng-template ngFor let-item [ngForOf]="GetItemByIndex(index)">
+                                                        <div class="cp7">
+                                                            <div class="cp8" data-tippy-trigger-hover="">
+                                                                <div><img [src]="GetItemByName(item)" class="cp9"
+                                                                        alt="warmogs-armor" loading="lazy"
+                                                                        style="opacity: 1; background: transparent;"
+                                                                        data-loaded="true"></div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+                            </div>
+                        </div>
+                        <div class="NoteToUse">
+                            <div class="n1">
+                                <div class="n2">
+                                    <div class="n3">Note</div>
+                                    <p class="n4">Double click a champ on field to remove them</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c6">
+                        <div class="c6-search">
+                            <div class="c6s-1">
+                                <div class="c6s-2">
+                                    <div class="c6s-3">
+                                        <span class="m-0"><img
+                                                src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/24-search.svg"
+                                                alt="" loading="lazy" class="c6s-4"></span>
+                                        <input placeholder="Search" class="c6s-5" value="">
+                                    </div>
+                                </div>
+                                <div class="c6s-7">
+
+
+                                </div>
+                                <div class="c6s-11"><label class="c6s-12"><span class="c6s-13">Items</span>
+                                        <span class="c6s-14"><input type="checkbox" class="c6s-15" checked="">
+                                            <span [class]="ChangeClassOption()" (click)="ChangeOption()">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="c6s-18">Champions</span></label></div>
+                            </div>
+                        </div>
+                        <div class="c6-itemList">
+                            <ng-container *ngIf="type==1">
+                                <ng-template ngFor let-item [ngForOf]="ChampionList" let index-index>
+                                    <div class="c6i-1" (dragstart)="onDragStart(item.name)">
+                                        <div draggable="true">
+                                            <div class="c6i-2">
+                                                <div class="c6i-3" data-tippy-trigger-hover="">
+                                                    <div class="c6i-4">
+                                                        <div class="c6i-5" role="img"
+                                                            [style]="GetStylebyName(item.name,1)">
+                                                            <span><img [src]="GetUrlbyName(item.name,1)"
+                                                                    [alt]="item.name" loading="lazy" class="m-0"></span>
+                                                        </div>
+                                                        <div class="c6i-6">
+                                                            <div class="c6i-7"
+                                                                style="border-color: var(--general-light-green-100);">
+                                                            </div>
+                                                            <div class="c6i-8">
+                                                                <div class="c6i-9"
+                                                                    style="background-color: var(--general-light-green-100);">
+                                                                </div><img
+                                                                    src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/check.svg"
+                                                                    alt="" class="c6i-10">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c6i-11">{{item.name}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                            <ng-container *ngIf="type==2">
+                                <ng-template ngFor let-item [ngForOf]="GetCombineItem()" let index-index>
+                                    <div class="c6i-1" (dragstart)="onDragStart(item.name)">
+                                        <div draggable="true">
+                                            <div class="c6i-2">
+                                                <div class="c6i-3" data-tippy-trigger-hover="">
+                                                    <div class="c6i-4">
+                                                        <div class="c6i-5" role="img"
+                                                            [style]="GetStylebyName(item.name,2)">
+                                                            <span><img [src]="GetUrlbyName(item.name,2)"
+                                                                    [alt]="item.name" loading="lazy" class="m-0"></span>
+                                                        </div>
+                                                        <div class="c6i-6">
+                                                            <div class="c6i-7"
+                                                                style="border-color: var(--general-light-green-100);">
+                                                            </div>
+                                                            <div class="c6i-8">
+                                                                <div class="c6i-9"
+                                                                    style="background-color: var(--general-light-green-100);">
+                                                                </div><img
+                                                                    src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/check.svg"
+                                                                    alt="" class="c6i-10">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c6i-11">{{item.name}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+.dropdown-menu {
+    background: #140e30
+}
+
+#sidebar {
+    width: 64px;
+    position: absolute;
+    height: 100vh;
+    background: #140e30;
+    color: #fff;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+.dropdown-toggle {
+    background: #252046;
+    width: 100%;
+}
+
+#sidebar ul li a:hover {
+    color: yellow;
+    background: #252046;
+    text-decoration: none;
+}
+
+ul ul {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #140e30;
+}
+
+a {
+    color: #fff;
+}
+.dropright{
+    width: 100%;
+}

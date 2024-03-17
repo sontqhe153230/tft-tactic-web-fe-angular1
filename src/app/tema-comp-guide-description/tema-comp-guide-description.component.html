@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="c1">
+        <div class="c2">
+            <div class="c3">General Info</div>
+            <div class="c4">Summarize how your team comp works, such as its core synergies and win conditions
+            </div>
+        </div>
+    </div>
+    <div class="c5">
+        <form [formGroup]="InfoTeamComp" (ngSubmit)="SaveData()" class="c6">
+            <div class="c7">
+                <div class="c8">
+                    <div class="c9">
+                        <div class="c10"><label for="CompName" class="c11">Comp Name *</label></div>
+                        <div class="c12"><input id="CompName" placeholder="Only 22 characters" maxlength="22"
+                                name="CompName" class="c13" formControlName="CompName" required=""></div>
+                    </div>
+
+                </div>
+                <div class="c18">
+                    <div class="c19">
+                        <div class="c20"><label for="tiers" class="c21">Playstyle</label><img
+                                src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/info.svg" alt="info"
+                                class="c22" data-tippy-trigger-hover=""></div>
+                        <div class="c23">
+                            <button id="downshift-42-toggle-button" aria-haspopup="listbox"
+                                aria-expanded="false" aria-labelledby="downshift-42-label downshift-42-toggle-button"
+                                type="button" class="c24" (click)="toggleDropdown()">
+                                <div class="c25"><span class="m-0">{{HandleSelection()}}</span></div><img
+                                    src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/down-arrow.svg"
+                                    alt="" class="c26">
+                            </button>
+                            <div id="downshift-42-menu" role="listbox" aria-labelledby="downshift-42-label"
+                                tabindex="-1" [class.disabled]="!isDropdownVisible">
+                                <ul class="c26-ul">
+                                    <li role="option" aria-selected="false" id="downshift-1-item-1" class="c26-li" (click)="toggleDropdown();SendSelection('Hyper Roll')">
+                                        <span class="m-0">Hyper Roll</span></li>
+                                    <li role="option" aria-selected="false" id="downshift-1-item-2" class="c26-li"(click)="toggleDropdown();SendSelection('Default')">
+                                        <span class="m-0">Default</span></li>
+                                    <li role="option" aria-selected="false" id="downshift-1-item-3" class="c26-li"(click)="toggleDropdown();SendSelection('Fast 8')">
+                                        <span class="m-0">Fast 8</span></li>
+                                    <li role="option" aria-selected="false" id="downshift-1-item-4" class="c26-li"(click)="toggleDropdown();SendSelection('Slow Roll')">
+                                        <span class="m-0">Slow Roll</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="c27"><label for="difficulties" class="c28">Difficulty</label></div>
+                        <div class="c28">
+                            <div class="c29 e1gs2ia50" data-tippy-trigger-hover=""
+                                [style]="ChangeStyleDifficulty1()"(click)="SelectionDifficulty('Hard');ChangeDefaultOption('Easy')">
+                                <span class="c31">
+                                    <div class="c32"></div><span class="c33">Hard</span>
+                                </span>
+                            </div>
+                            <div class="c30 e1gs2ia50" data-tippy-trigger-hover=""
+                                [style]="ChangeStyleDifficulty2()" (click)="SelectionDifficulty('Medium');ChangeDefaultOption('Easy')">
+                                <span class="c31">
+                                    <div class="c34"></div><span class="c33">Medium</span>
+                                </span>
+                            </div>
+                            <div class="c29 e1gs2ia50" data-tippy-trigger-hover=""
+                                [style]="ChangeStyleDifficulty3()" (click)="SelectionDifficulty('Easy');ChangeDefaultOption('Easy')">
+                                <span class="c31">
+                                    <div class="c35"></div><span class="c33">Easy</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c36">
+                    <div class="c37"><label for="generalInfo" class="c38">General Info *</label><img
+                            src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/info.svg" alt="info"
+                            class="c39" data-tippy-trigger-hover=""></div><textarea class="c40" id="generalInfo"
+                        maxlength="320" rows="1" placeholder="Describe your team comp and how it works"
+                        name="generalInfo"formControlName="GeneralInfo" required=""></textarea>
+                </div>
+                <div class="c36">
+                    <div class="c37"><label for="generalInfo" class="c38">When to Make *</label><img
+                            src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/info.svg" alt="info"
+                            class="c39" data-tippy-trigger-hover=""></div><textarea class="c40" id="generalInfo"
+                        maxlength="320" rows="1" placeholder="Describe your team comp and when to make "
+                        name="generalInfo" formControlName="WhenToMake" required=""></textarea>
+                </div>
+                <div class="c36">
+                    <div class="c37"><label for="generalInfo" class="c38">HOW TO PLAY *</label><img
+                            src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/info.svg" alt="info"
+                            class="c39" data-tippy-trigger-hover=""></div><textarea class="c40" id="generalInfo"
+                        maxlength="320" rows="1" placeholder="Describe your team comp and how it works"
+                        name="generalInfo" formControlName="HowToPlay" required=""></textarea>
+                </div>
+                <div class="c36">
+                    <div class="c37"><label for="generalInfo" class="c38">ADDITIONAL COMP TIPS*</label><img
+                            src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/info.svg" alt="info"
+                            class="c39" data-tippy-trigger-hover=""></div><textarea class="c40" id="generalInfo"
+                        maxlength="320" rows="1" placeholder="Describe ADDITIONAL COMP TIPS"
+                        name="generalInfo"formControlName="AdditionalCompTip" required=""></textarea>
+                </div>
+            </div>
+            <div class="c41">
+                <div class="c42">
+                    <div class="c43"><button  type="submit" class="c44"><span class="c45">Next
+                                step</span></button></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

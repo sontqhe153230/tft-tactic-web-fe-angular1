@@ -1,0 +1,657 @@
+<div class="header">
+    <h1>TFT Meta Comps in Set 10</h1>
+
+</div>
+<div class="container">
+    <div class="search-bar">
+        <div class="search-input">
+            <input type="text" placeholder="search" (keyup)="searchInputKeyUp($event)">
+            <div class="autocom-box">
+            </div>
+            <div class="icon"><i class="fas fa-search"></i></div>
+        </div>
+        <div class="synergy-select-option">
+            <div class="dropdown-select">
+                <span class="dropdown-selected" (click)="loadOptions()" [class.disabled]="!dropdownOpen">
+                    <img class="star-icon" [src]="GetUrlBySynergySelected()" alt="">
+                    <span class="dropdown-selected-span">{{ selectedSynergy ? selectedSynergy : 'Any synergy' }}</span>
+                    <i class="fa fa-caret-down dropdown-caret" (click)="toggleDropdown()"></i>
+                </span>
+            </div>
+            <div class="dropdown-item" [class.disabled]="!dropdownOpen">
+                <ul class="dropdown">
+                    <ng-template [ngIf]="selectedSynergy !='Any synergy' && selectedSynergy !=null ">
+                        <li class="synergy-item" (click)="selectOption('Any synergy')">Any synergy</li>
+                    </ng-template>
+
+                    <li class="synergy-item" *ngFor="let synergy of synergies" (click)="selectOption(synergy)">{{
+                        synergy }}</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="teamcomp-list">
+        <div class="teamcomp-item">
+            <ng-template ngFor let-item [ngForOf]="TeamComp">
+
+                <div class="teamcomp-item-description" [style]="getBackgroundImageUrl(item.idComp)"
+                    (click)="loadSeeMore(item.idComp)" [class.disabled]="!SeeMore[item.idComp]">
+                    <div class="teamcomp-item-description-content">
+                        <div class="teamcomp-item-description-content1">
+                            <div class="teamcomp-item-description-frame">
+                                <a class="link-detail" href="#"><span>{{item.meta_content.title}}</span></a>
+                            </div>
+                        </div>
+                        <div class="teamcomp-item-description-content2">
+
+                           
+                            <ng-container *ngIf="item.playstyle!=''">
+                                <div class="type-of-teamcomp">{{item.playstyle}}</div>
+                            </ng-container>
+
+                            <div class="level" [style]="GetColorByLevel(item.rate_of_difficul)">
+                                {{item.rate_of_difficul}}</div>
+                            <img src="https://cdn.mobalytics.gg/assets/common/icons/hex-tiers/S.svg?2" class="m-jmopu0"
+                                alt="s" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="teamcomp-item-description-champ-list">
+                        <ng-template ngFor let-plan [ngForOf]="item.fomation">
+                            <ng-container *ngIf="plan.plan === 'late'">
+                                <ng-template ngFor let-map [ngForOf]="plan.map">
+                                    <a class="link-detail-champion" href="#">
+                                        <div class="champion" data-tippy-trigger-hover="">
+                                            <div class="champion1">
+                                                <div class="champion2" role="img"
+                                                    [ngStyle]="{'border':getBorderSet(map.data.champion_id)}">
+                                                    <span>
+                                                        <img [src]="GetUrlOfChampionIcon(map.data.champion_id)"
+                                                            alt="Illaoi" loading="lazy" class="m-0">
+                                                    </span>
+                                                </div>
+                                                <ng-container *ngIf="map.data.headliner !== '' ">
+                                                    <div class="c1">
+                                                        <img [src]="GetIconTraitByHeadliner(map.data.headliner)"  class="c1-img">
+                                                           
+                                                    </div>
+                                                </ng-container>
+                                                <div class="champion3">
+                                                    <div class="champion4" style="border-color: #1dc49b;"></div>
+                                                    <div class="champion5">
+                                                        <div class="champion6" style="background-color: #1dc49b;"></div>
+                                                        <img src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/check.svg"
+                                                            alt="" class="champion7">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-container *ngIf="map.data.item && map.data.item.length > 0">
+                                                <div class="champion8">
+                                                    <img class="champion9" alt="dragons-claw" loading="lazy"
+                                                        style="opacity: 1; background: transparent;" data-loaded="true"
+                                                        [src]="GetItemById(map.data.item[0])">
+                                                    <ng-container *ngIf="map.data.item && map.data.item.length > 1">
+                                                        <img class="champion9" alt="evenshroud" loading="lazy"
+                                                            style="opacity: 1; background: transparent;"
+                                                            data-loaded="true" [src]="GetItemById(map.data.item[1])">
+                                                    </ng-container>
+                                                    <ng-container *ngIf="map.data.item && map.data.item.length > 2">
+                                                        <img class="champion9" alt="bramble-vest" loading="lazy"
+                                                            style="opacity: 1; background: transparent;"
+                                                            data-loaded="true" [src]="GetItemById(map.data.item[2])">
+                                                    </ng-container>
+                                                </div>
+                                            </ng-container>
+
+                                        </div>
+                                        <div class="champion10">{{GetNameByChampionId(map.data.champion_id)}}</div>
+                                    </a>
+                                </ng-template>
+                            </ng-container>
+                        </ng-template>
+
+                    </div>
+                    <div class="see-more-content">
+                        <button ngClass="down"><img width="16" height="16"
+                                src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/down-arrow.svg"
+                                alt="Open details" class="m-4zleql"></button>
+                    </div>
+                </div>
+                <div class="more-info" [class.disabled]="!SeeMore[item.idComp]">
+                    <div class="more-info-background" [style]="getBackgroundImageLargerUrl(item.idComp)">
+                        <div class="s1">
+                            <div class="s2">
+                                <div class="s3">
+                                    <p class="s3-text">General info</p>
+                                    <div class="s3-description">
+                                        <p class="s3-description-text">{{item.meta_content.info}}</p>
+                                    </div>
+                                </div>
+                                <div class="s4">
+                                    <div class="s5">
+                                        <span class="guide">
+                                            <a class="link-guide"
+                                            [routerLink]="['/Guide', item.idComp]">
+                                                <button class="guide-btn" fdprocessedid="9oh5x" (click)="redirectToRoute(item.idComp)">
+                                                    <span class="guide-text">Open guide</span>
+                                                </button>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s5">
+                                <div class="synergy-list">
+                                    <p class="sl1">Full Synergy List</p>
+                                    <div class="sl2">
+                                        <ng-container *ngIf="getSynergy(item.idComp)">
+                                            <ng-container *ngFor="let synergy of style">
+                                                <!-- Display Classes -->
+
+                                                <div class="sl3">
+                                                    <img [src]="GetBadgeWithKeyValue(synergy.style,synergy.headliner)"
+                                                        alt="big-shot" class="sl3-img">
+
+                                                    <div class="sl4">
+                                                        <img [src]="GetTraitByName(synergy.name)" alt="Big Shot"
+                                                            class="sl4-img">
+                                                    </div>
+
+
+                                                    <div class="sl5">
+                                                        <div class="sl5-num">{{ synergy.numberActive }}</div>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Display Origins -->
+
+                                            </ng-container>
+                                        </ng-container>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="augment-suggestion">
+                                    <p class="as1">Augments</p>
+                                    <div class="as2">
+                                        <div class="as3">
+                                            <div class="as3-text"><span class="m-0">Tier 1</span></div>
+                                            <ng-container
+                                                *ngFor="let augment of item.meta_content.augument_suggestion[0].augument_selected">
+
+                                                <div><img class="as3-img" alt="cutting-corners" loading="lazy"
+                                                        style="border-color: #cccaca; background: #2c274f;"
+                                                        data-loaded="true" [src]="GetAugument(augment,1)">
+                                                </div>
+
+                                            </ng-container>
+                                        </div>
+                                        <div class="as3">
+                                            <div class="as3-text"><span class="m-0">Tier 2</span></div>
+                                            <ng-container
+                                                *ngFor="let augment of item.meta_content.augument_suggestion[1].augument_selected">
+                                                <div><img class="as3-img" alt="cutting-corners" loading="lazy"
+                                                        style="border-color: #e5a109; background: #2c274f;"
+                                                        data-loaded="true" [src]="GetAugument(augment,2)">
+                                                </div>
+                                            </ng-container>
+
+                                        </div>
+                                        <div class="as3">
+                                            <div class="as3-text"><span class="m-0">Tier 3</span></div>
+                                            <ng-container
+                                                *ngFor="let augment of item.meta_content.augument_suggestion[2].augument_selected">
+                                                <div><img class="as3-img" alt="cutting-corners" loading="lazy"
+                                                        style="border-image: conic-gradient(from 180deg at 50% 50%, rgb(181, 249, 177) -25.61deg, rgb(174, 167, 248) 0.63deg, rgb(185, 232, 188) 27.2deg, rgb(246, 254, 216) 56.21deg, rgb(199, 251, 247) 83.01deg, rgb(154, 240, 254) 109.35deg, rgb(245, 236, 255) 129.56deg, rgb(248, 153, 248) 154.85deg, rgb(182, 252, 227) 181.24deg, rgb(126, 147, 242) 210.86deg, rgb(225, 164, 253) 244.3deg, rgb(175, 230, 240) 264.6deg, rgb(243, 241, 199) 287.41deg, rgb(233, 159, 126) 306.52deg, rgb(181, 249, 177) 334.39deg, rgb(174, 167, 248) 360.63deg) 1 / 1 / 0 stretch; ; background: #2c274f;"
+                                                        data-loaded="true" [src]="GetAugument(augment,3)">
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formation-team">
+                                    <p class="formation-team-header">Formation</p>
+                                    <div class="ft1">
+                                        <div class="ft2">
+
+                                            <ng-container *ngFor="let i of [].constructor(7); let index = index">
+                                                <ng-container *ngIf="CheckPosition(item.idComp,1,index)==true">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [attr.id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [attr.id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <image
+                                                                    [attr.href]="GetChampionIcon(item.idComp,index,1)"
+                                                                    width="100" height="100" x="-4" y="-2"
+                                                                    [attr.clip-path]="GetUrlClipPath(item.idComp)"
+                                                                    transform="translate(0, 0)">
+                                                                </image>
+                                                                <path [attr.stroke]="GetStyle(item.idComp,index,1)"
+                                                                    stroke-width="4" fill="none" class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-container *ngIf="CheckPosition(item.idComp,1,index)==false">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <path stroke="#332b58" stroke-width="4" fill="#19113e"
+                                                                    class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+
+
+                                            </ng-container>
+
+
+
+                                        </div>
+                                        <div class="ft2">
+                                            <ng-container *ngFor="let i of [].constructor(7); let index = index">
+                                                <ng-container *ngIf="CheckPosition(item.idComp,2,index)==true">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <image
+                                                                    [attr.href]="GetChampionIcon(item.idComp,index,2)"
+                                                                    width="100" height="100" x="-4" y="-2"
+                                                                    [attr.clip-path]="GetUrlClipPath(item.idComp)"
+                                                                    transform="translate(0, 0)">
+                                                                </image>
+                                                                <path [attr.stroke]="GetStyle(item.idComp,index,2)"
+                                                                    stroke-width="4" fill="none" class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-container *ngIf="CheckPosition(item.idComp,2,index)==false">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <path stroke="#332b58" stroke-width="4" fill="#19113e"
+                                                                    class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+
+
+                                            </ng-container>
+
+                                        </div>
+                                        <div class="ft2">
+                                            <ng-container *ngFor="let i of [].constructor(7); let index = index">
+                                                <ng-container *ngIf="CheckPosition(item.idComp,3,index)==true">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <image
+                                                                    [attr.href]="GetChampionIcon(item.idComp,index,3)"
+                                                                    width="100" height="100" x="-4" y="-2"
+                                                                    clip-path="url(#myMask)"
+                                                                    transform="translate(0, 0)">
+                                                                </image>
+                                                                <path [attr.stroke]="GetStyle(item.idComp,index,3)"
+                                                                    stroke-width="4" fill="none" class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-container *ngIf="CheckPosition(item.idComp,3,index)==false">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath id="myMask">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient id="headlinerSynergyGradient"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <path stroke="#332b58" stroke-width="4" fill="#19113e"
+                                                                    class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+
+
+                                            </ng-container>
+
+                                        </div>
+                                        <div class="ft2">
+                                            <ng-container *ngFor="let i of [].constructor(7); let index = index">
+                                                <ng-container *ngIf="CheckPosition(item.idComp,4,index)==true">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <image
+                                                                    [attr.href]="GetChampionIcon(item.idComp,index,4)"
+                                                                    width="100" height="100" x="-4" y="-2"
+                                                                    [attr.clip-path]="GetUrlClipPath(item.idComp)"
+                                                                    transform="translate(0, 0)">
+                                                                </image>
+                                                                <path [attr.stroke]="GetStyle(item.idComp,index,4)"
+                                                                    stroke-width="4" fill="none" class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-container *ngIf="CheckPosition(item.idComp,4,index)==false">
+                                                    <div class="ft3">
+                                                        <div class="ft4"><svg width="38px" height="42px"
+                                                                viewBox="0 0 84 96" class="ft4-span">
+                                                                <defs>
+                                                                    <clipPath [id]="'myMask'+item.idComp">
+                                                                        <polygon
+                                                                            points="184 24 226 -3.16413562e-15 268 24 268 72 226 96 184 72"
+                                                                            transform="translate(-184, 0)">
+                                                                        </polygon>
+                                                                    </clipPath>
+                                                                    <linearGradient
+                                                                        [id]="'headlinerSynergyGradient'+item.idComp"
+                                                                        x1="0%" y1="0%" x2="100%" y2="0%" width="38px"
+                                                                        height="42px" gradientTransform="rotate(65)">
+                                                                        <stop offset="0.0674318" stop-color="#7157CE">
+                                                                        </stop>
+                                                                        <stop offset="0.105504" stop-color="#6FB1BA">
+                                                                        </stop>
+                                                                        <stop offset="0.172706" stop-color="#6487F9">
+                                                                        </stop>
+                                                                        <stop offset="0.221906" stop-color="#9978C9">
+                                                                        </stop>
+                                                                        <stop offset="0.350065" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                        <stop offset="0.464531" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.54849" stop-color="#67BE46">
+                                                                        </stop>
+                                                                        <stop offset="0.707406" stop-color="#FCD17C">
+                                                                        </stop>
+                                                                        <stop offset="0.85713" stop-color="#82B8D8">
+                                                                        </stop>
+                                                                        <stop offset="1" stop-color="#C74DE0">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <path stroke="#332b58" stroke-width="4" fill="#19113e"
+                                                                    class="slot-border"
+                                                                    d="M186,25.1606451 L186,70.8393549 L226,93.6964978 L266,70.8393549 L266,25.1606451 L226,2.30350221 L186,25.1606451 Z"
+                                                                    transform="translate(-184, 0)"></path>
+                                                            </svg></div>
+                                                        <div class="ft5"></div>
+                                                    </div>
+                                                </ng-container>
+
+
+
+                                            </ng-container>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-proority"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+
+    </div>
+</div>
+
+<script src="assets/js/suggestion.js"></script>

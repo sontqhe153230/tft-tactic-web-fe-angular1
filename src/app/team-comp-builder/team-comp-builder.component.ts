@@ -538,6 +538,7 @@ export class TeamCompBuilderComponent {
   };
   
   RedirectToGuideDescription(){
+    console.log(this.ItemWhenDrop)
     const formation: Formation[] = [];
    
       this.newTeamComp=this.teamcompService.getNewTeamComp();
@@ -547,7 +548,7 @@ export class TeamCompBuilderComponent {
       if(this.ItemWhenDrop[i].position>=0 && this.ItemWhenDrop[i].position<=6){       
           const map: MyMap = { 
             pos: { x: this.ItemWhenDrop[i].position+1, y: 1 },
-            data: { item: this.ItemWhenDrop[i].ItemTaken, champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.trim, champion_star: i + 1, headliner: '' }
+            data: { item: this.ItemWhenDrop[i].ItemTaken, champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  + 1, headliner: this.ItemWhenDrop[i].Headliner }
           };
           maps.push(map) 
     }
@@ -556,21 +557,21 @@ export class TeamCompBuilderComponent {
 
       const map: MyMap = { 
         pos: { x: this.mapNumberLine2(this.ItemWhenDrop[i].position)-1, y: 2 },
-        data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.trim, champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
+        data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
       };
       maps.push(map)
   }
   if(this.ItemWhenDrop[i].position>=14 && this.ItemWhenDrop[i].position<=20){
     const map: MyMap = { 
       pos: { x: this.mapNumberLine3(this.ItemWhenDrop[i].position)+1, y: 3 },
-      data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.trim, champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
+      data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
     };
     maps.push(map)
 }
 if(this.ItemWhenDrop[i].position>=21 && this.ItemWhenDrop[i].position<=27){
   const map: MyMap = { 
     pos: { x: this.mapNumberLine4(this.ItemWhenDrop[i].position)+1, y: 4 },
-    data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.trim, champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
+    data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
   };
   maps.push(map)
 }

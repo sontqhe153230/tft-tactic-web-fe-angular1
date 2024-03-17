@@ -1,0 +1,1 @@
+import{T as o,Wa as i,Xa as a,cb as r,gb as p}from"./chunk-ETA7DC4B.js";var d=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-champion"]],standalone:!0,features:[p],decls:2,vars:0,template:function(n,c){n&1&&(i(0,"p"),r(1,"champion works!"),a())}});let t=e;return t})();export{d as ChampionComponent};

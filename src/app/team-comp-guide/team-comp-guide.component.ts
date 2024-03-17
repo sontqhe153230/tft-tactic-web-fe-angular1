@@ -290,7 +290,7 @@ export class TeamCompGuideComponent {
       for (let i = 0; i < teamcomp.fomation[2].map.length; i++) {
         if (teamcomp.fomation[2].map[i].pos.x == position + 1 && teamcomp.fomation[2].map[i].pos.y == line) {
           let name = teamcomp.fomation[2].map[i].data.champion_id.toLocaleLowerCase().replace("tft10_", "");
-          return "../../../assets/Champion/icon/" + name + ".webp";
+          return "../../../assets/Champion/icon/" + name.replaceAll(" ","") + ".webp";
         }
       }
 
@@ -546,7 +546,7 @@ export class TeamCompGuideComponent {
       for (let i = 0; i < teamcomp.fomation[type].map.length; i++) {
         if (teamcomp.fomation[type].map[i].pos.x == position + 1 && teamcomp.fomation[type].map[i].pos.y == line) {
           let name = teamcomp.fomation[type].map[i].data.champion_id.toLocaleLowerCase().replace("tft10_", "");
-          return "../../../assets/Champion/icon/" + name + ".webp";
+          return "../../../assets/Champion/icon/" + name.replaceAll(" ","") + ".webp";
         }
       }
 

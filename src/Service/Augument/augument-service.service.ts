@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class AugumentServiceService {
 
   constructor(private http:HttpClient) { }
-
+  
   getAugument(){
-    return this.http.get<any[]>('https://localhost:7283/api/Augument');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Augument');
   }
 }

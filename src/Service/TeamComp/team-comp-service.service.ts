@@ -31,26 +31,26 @@ export class TeamCompServiceService {
   getNewTeamComp(): TeamComp  {
     return this.sharedData;
   }
-  private apiUrl = 'https://localhost:7283/api/TeamComp';
+
   constructor(private http:HttpClient) {
 
    
    }
   getTeamComp(){
-    return this.http.get<any[]>('https://localhost:7283/api/TeamComp');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/TeamComp');
   }
   getTeamCompById(id:number){
-    return this.http.get<TeamComp>('https://localhost:7283/api/TeamComp/'+id);
+    return this.http.get<TeamComp>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/TeamComp/'+id);
   }
   getChampionByTeamCompId(id:number,plan:string){
-    return this.http.get<Champion[]>('https://localhost:7283/api/TeamComp/champion/'+id+'/'+plan);
+    return this.http.get<Champion[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/TeamComp/champion/'+id+'/'+plan);
   }
 
   getHeadlinerByTeamCompId(id:number){
-    return this.http.get<string>('https://localhost:7283/api/TeamComp/headliner/'+id);
+    return this.http.get<string>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/TeamComp/headliner/'+id);
   }
   CreateTeamComp(TeamComp:TeamComp) {
-    const url = 'https://localhost:7283/api/TeamComp';
+    const url = 'https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/TeamComp';
     const headers = new HttpHeaders({
       'accept': 'text/plain',
       'Content-Type': 'application/json'

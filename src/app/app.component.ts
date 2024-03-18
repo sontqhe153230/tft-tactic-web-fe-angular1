@@ -4,7 +4,7 @@ import { HeaderComponent } from "./component/header/header.component";
 import { SidebarComponent } from "./component/sidebar/sidebar.component";
 import { DOCUMENT } from '@angular/common';
 import { HomeComponent } from './component/home/home.component';
-import swal from 'sweetalert2'; 
+
 
 
 @Component({

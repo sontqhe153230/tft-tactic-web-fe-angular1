@@ -9,6 +9,6 @@ export class ItemServiceService {
   constructor(private http:HttpClient) { }
 
   getItem(){
-    return this.http.get<any[]>('https://localhost:7283/api/Item');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Item');
   }
 }

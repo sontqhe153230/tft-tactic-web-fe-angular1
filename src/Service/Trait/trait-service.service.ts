@@ -9,9 +9,9 @@ export class TraitServiceService {
   constructor(private http:HttpClient) { }
 
   getTrait(){
-    return this.http.get<any[]>('https://localhost:7283/api/Trait');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Trait');
   }
   getTraitName(){
-    return this.http.get<any[]>('https://localhost:7283/api/Trait/name');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Trait/name');
   }
 }

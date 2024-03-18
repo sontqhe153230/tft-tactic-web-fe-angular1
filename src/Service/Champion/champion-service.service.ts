@@ -9,12 +9,12 @@ export class ChampionServiceService {
   constructor(private http:HttpClient) { }
 
   getChampion(){
-    return this.http.get<any[]>('https://localhost:7283/api/Champion');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Champion');
   }
   getChampionName(){
-    return this.http.get<any[]>('https://localhost:7283/api/Champion/name');
+    return this.http.get<any[]>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Champion/name');
   }
   getChampionById(id:string){
-    return this.http.get<any>('https://localhost:7283/api/Champion/GetChampion?id='+id);
+    return this.http.get<any>('https://tft-tatctic-app-7d0316a41128.herokuapp.com/api/Champion/GetChampion?id='+id);
   }
 }

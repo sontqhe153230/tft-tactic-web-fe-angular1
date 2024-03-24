@@ -1,1 +1,61 @@
-<p>champion works!</p>
+<div id="loader"*ngIf="!imageLoaded" [style]="ShowDiplayLoader()"></div>
+<div id="container" [style]="ShowDiplay()">
+    <div class="header">
+        <h1>
+            TFT <span style="color:#fc7c00;">CHAMPIONS</span>
+        </h1>
+        <h4>
+            We’ve got you covered for every champion, synergy, and item in TFT. Stay on top of the meta as Teamfight Tactics continues to grow and develop
+        </h4>
+    </div>
+
+    <div class="champion-list">
+        <ng-container *ngFor="let c of champion ">
+            <a href="ChampionDetails/{{c.id}}" >
+                <div class="champion-card ">
+                    <div class="card " [style]="{ 'background-image': getUrlChampion(c.id)} " >
+
+                        <div class="trails ">
+                            <div>
+                                <ng-container *ngFor="let i of c.origins ">
+                                    <div class="trail-item ">
+
+                                        <div class="trail-image ">
+                                            <img [src]="getUrlTrails(i)" (load)="onImageLoad()"  alt=" ">
+                                        </div>
+                                        <p>{{i.replace("Set10_","")}}</p>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngFor="let j of c.classes ">
+                                    <div class="trail-item ">
+
+                                        <div class="trail-image ">
+                                            <img [src]="getUrlTrails(j) " alt=" ">
+                                        </div>
+                                        <p>{{j.replace("Set10_","")}}</p>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="footer ">
+                        <div class="row right ">
+                            <img src="../../assets/icon/coin.svg " alt=" ">
+                            <p class="mr-3 ">{{c.cost}}</p>
+                        </div>
+                        <div class="left ">
+                            <p>{{c.name}}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+        </ng-container>
+    </div>
+
+</div>

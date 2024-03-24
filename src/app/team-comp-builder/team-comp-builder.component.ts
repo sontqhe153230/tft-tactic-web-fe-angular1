@@ -35,12 +35,15 @@ export class TeamCompBuilderComponent {
   item: Item[] = [];
   TraitList: Trait[] = [];
   AugumentList: Augument[] = [];
+  loading = true;
   ngAfterContentChecked() {
 
     this.cdr.detectChanges();
 
   }
   ngOnInit() {
+
+    
     this.route2.params.subscribe(params => {
       this.plan = params['plan'];
 
@@ -75,11 +78,11 @@ export class TeamCompBuilderComponent {
     var itemList = this.item.filter(x => x.components != null);
     return itemList;
   }
-  GetUrlbyName(name: string, type: number) {
+  GetUrlbyName(name: string, type: number,origin:string) {
     if (type == 1) {
       let championName = name.replace(' ', '').toLowerCase();
-      if (name == "akali_truedamage") {
-        return "../../../assets/Champion/icon/akali-true-damage.webp";
+      if (name == "Akali"&&origin=="Set10_TrueDamage") {
+        return "../../../assets/Champion/icon/akali-truedamage.webp";
       }
       return "../../../assets/Champion/icon/" + championName + ".webp";
     }
@@ -331,6 +334,22 @@ export class TeamCompBuilderComponent {
         });
       }
     });
+     this.ItemWhenDrop.forEach(item=>{
+      item.ItemTaken.forEach(element => {
+       let itemCheck=this.item.find(x=>x.name==element);
+       if(itemCheck?.trait!=null){
+        if (synergyActive.Synergy[itemCheck?.trait] !== undefined) {
+          synergyActive.Synergy[itemCheck.trait]++;
+        }
+        else {
+          // If trait does not exist in Synergy, initialize it with 1
+          synergyActive.Synergy[itemCheck.trait] = 1;
+        }
+       }
+      });
+     })
+
+
     if (synergyActive.Synergy[headliner] !== undefined) {
       synergyActive.Synergy[headliner]++;
     } else if (synergyActive.Synergy[headliner] !== undefined) {
@@ -520,7 +539,7 @@ export class TeamCompBuilderComponent {
     return [];
   }
   GetItemByName(name:string){
-    let item = name.replaceAll(" ", "-").replaceAll("'", "").toLowerCase();
+    let item = name.replaceAll(" ", "-").replaceAll("'", "").replaceAll("/", "").toLowerCase();
       return "../../../assets/Item/Combined Items/" + item + ".png";
   }
   newTeamComp: TeamComp = { 
@@ -557,21 +576,21 @@ export class TeamCompBuilderComponent {
 
       const map: MyMap = { 
         pos: { x: this.mapNumberLine2(this.ItemWhenDrop[i].position)-1, y: 2 },
-        data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
+        data: { item: this.ItemWhenDrop[i].ItemTaken, champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
       };
       maps.push(map)
   }
   if(this.ItemWhenDrop[i].position>=14 && this.ItemWhenDrop[i].position<=20){
     const map: MyMap = { 
       pos: { x: this.mapNumberLine3(this.ItemWhenDrop[i].position)+1, y: 3 },
-      data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
+      data: { item: this.ItemWhenDrop[i].ItemTaken, champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
     };
     maps.push(map)
 }
 if(this.ItemWhenDrop[i].position>=21 && this.ItemWhenDrop[i].position<=27){
   const map: MyMap = { 
     pos: { x: this.mapNumberLine4(this.ItemWhenDrop[i].position)+1, y: 4 },
-    data: { item: [], champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
+    data: { item: this.ItemWhenDrop[i].ItemTaken, champion_id: `TFT10_`+this.ItemWhenDrop[i].championName.replaceAll(" ",""), champion_star:  1, headliner: this.ItemWhenDrop[i].Headliner }
   };
   maps.push(map)
 }

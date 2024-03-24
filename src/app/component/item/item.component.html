@@ -1,0 +1,64 @@
+<div id="loader"*ngIf="!imageLoaded" [style]="ShowDiplayLoader()"></div>
+
+<div class="container" [style]="ShowDiplay()">
+    <header class="c1">
+        <p class="c2">Recipes:</p>
+        <div class="c3">
+            <div class="c4">
+                <ng-template ngFor let-item [ngForOf]="GetBasicItem()">
+                <a class="c5" (click)="SelectListItemByBasicItem(item.id)"><img
+                        [src]="GetUrlitemByName(item.name,'basic')"
+                        class="c6" alt="recurve-bow" loading="lazy" style="opacity: 1; background: transparent;"
+                        data-loaded="true">
+                </a>
+            </ng-template>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="c7 ">
+        <div>Item</div>
+        <div>Stat</div>
+        <div>Item Bonus</div>
+        <div>Recipe</div>
+    </div>
+    <div class="c8 ">
+        <ng-template ngFor let-item [ngForOf]="GetCombinedItem()">
+       
+        <div class="c9 "><img [src]="GetUrlCombineItemImg(item.name)" 
+                class="c10" alt="adaptive-helm" loading="lazy" style="opacity: 1; background: transparent;"
+                data-loaded="true">
+            <div class="c11">{{item.name}}</div>
+        </div>
+        <div class="c15">
+            <div  class="ci-18">
+                <ng-container *ngFor="let i of [].constructor(GetNumberEffect(item.name)); let itemIndex = index">
+                    <div  class="ci-19"><img alt="spell icon" (load)="onImageLoad()"
+                        class="ci-20" [src]="GetType(item.name,itemIndex)"
+                        [style]="GetStyleByType(item.name,itemIndex)">
+                    <p  class="ci-21">{{GetInfoOfType(item.name,itemIndex)}}</p>
+                </div>
+               
+                </ng-container>
+                
+            </div>
+        </div>
+        <div class="c12">
+            <p class="c13">{{item.description}}</p>
+        </div>
+        <div class="c14 ">
+            <ng-container *ngFor="let i of [].constructor(2); let itemIndex = index">
+                <div class="ci-23" >
+                    <div><img
+                            [src]="GetComponent(item.name,itemIndex)"
+                            
+                            class="ci-24" alt="bf-sword" loading="lazy"
+                            style="opacity: 1; background: transparent;"
+                            data-loaded="true"></div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-template>
+    </div>
+</div>

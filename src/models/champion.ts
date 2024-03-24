@@ -33,3 +33,8 @@ export interface Champion {
     averagePlacement: number;
     playRate: number;
 }
+
+export interface RelativeChampion {
+    trait: string;
+    championRelative:Champion[];
+}

@@ -4,9 +4,9 @@ export interface Item {
     name: string;
     tier: string;
     description: string;
-    components: object;
+    components: string[];
     isBase: boolean;
-    trait: object;
+    trait: string;
     categoryId: object;
     isUnique: boolean;
     effects: { [key: string]: string };

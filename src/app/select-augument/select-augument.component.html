@@ -1,0 +1,155 @@
+<div class="s1">
+    <div class="c1">
+        <div class="c2">
+            <div class="c3">General Info</div>
+            <div class="c4">Summarize how your team comp works, such as its core synergies and win conditions
+            </div>
+        </div>
+    </div>
+    <div class="s2">Recommended Augments</div>
+    <div class="s3">Choose up to 3 recommended Augments for each tier</div>
+    <div class="s4">
+        <div class="s5">
+            <div class="s6">Tier 1</div>
+            <div class="s7">
+                <ng-container *ngIf="AugumentSuggestiontier1.augument_selected.length>0">
+                    <ng-container *ngFor="let a of AugumentSuggestiontier1.augument_selected">
+                        <div class="ss18" data-tippy-trigger-hover="">
+                            <div><img (click)="SelectAugumentByTier(1);OpenSelection()"
+                                    [src]="GetAugumentTier(a,1)"
+                                    class="ss10" alt="Band of Thieves I" loading="lazy" data-loaded="true"
+                                    style="border-color: #cccaca; background: #2c274f;">
+                            </div>
+                           
+                        </div>
+                    </ng-container>
+                   
+                </ng-container>
+
+                <ng-container *ngIf="AugumentSuggestiontier1.augument_selected.length<3">
+                <div data-tippy-trigger-hover="">
+                    <div class="s8">
+                        <div class="s9"><img (click)="SelectAugumentByTier(1);OpenSelection()"
+                                src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/16-plus-add.svg"
+                                alt="Add new item" class="s10"></div>
+                    </div>
+                </div>
+                </ng-container>
+
+                <ng-container *ngIf="AugumentSuggestiontier1.augument_selected.length>0">
+                    <img class="ss11" src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/delete.svg"
+                alt="delete" data-tippy-trigger-hover=""(click)="DeleteAllSelection(1)">
+                </ng-container>
+                
+            </div>
+        </div>
+        <div class="s5">
+            <div class="s6">Tier 2</div>
+            <div class="s7">
+                <ng-container *ngIf="AugumentSuggestiontier2.augument_selected.length>0">
+                    <ng-container *ngFor="let a of AugumentSuggestiontier2.augument_selected">
+                        <div class="ss18" data-tippy-trigger-hover="">
+                            <div><img (click)="SelectAugumentByTier(2);OpenSelection()"
+                                    [src]="GetAugumentTier(a,2)"
+                                    class="ss10" alt="Band of Thieves I" loading="lazy" data-loaded="true"
+                                    style="border-color: #f2bf43; background: #2c274f;">
+                            </div>
+                           
+                        </div>
+                    </ng-container>
+                   
+                </ng-container>
+
+                <ng-container *ngIf="AugumentSuggestiontier2.augument_selected.length<3">
+                <div data-tippy-trigger-hover="">
+                    <div class="s8">
+                        <div class="s9"><img (click)="SelectAugumentByTier(2);OpenSelection()"
+                                src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/16-plus-add.svg"
+                                alt="Add new item" class="s10"></div>
+                    </div>
+                </div>
+                </ng-container>
+
+                <ng-container *ngIf="AugumentSuggestiontier2.augument_selected.length>0">
+                    <img class="ss11" src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/delete.svg"
+                alt="delete" data-tippy-trigger-hover="" (click)="DeleteAllSelection(2)">
+                </ng-container>
+                
+            </div>
+        </div>
+        <div class="s5">
+            <div class="s6">Tier 3</div>
+            <div class="s7">
+                <ng-container *ngIf="AugumentSuggestiontier3.augument_selected.length>0">
+                    <ng-container *ngFor="let a of AugumentSuggestiontier3.augument_selected">
+                        <div class="ss18" data-tippy-trigger-hover="">
+                            <div><img (click)="SelectAugumentByTier(3);OpenSelection()"
+                                    [src]="GetAugumentTier(a,3)"
+                                    class="ss10" alt="Band of Thieves I" loading="lazy" data-loaded="true"
+                                    style="background: #2c274f;
+                                    border-image: conic-gradient(from 180deg at 50% 50%, rgb(181, 249, 177) -25.61deg, rgb(174, 167, 248) 0.63deg, rgb(185, 232, 188) 27.2deg, rgb(246, 254, 216) 56.21deg, rgb(199, 251, 247) 83.01deg, rgb(154, 240, 254) 109.35deg, rgb(245, 236, 255) 129.56deg, rgb(248, 153, 248) 154.85deg, rgb(182, 252, 227) 181.24deg, rgb(126, 147, 242) 210.86deg, rgb(225, 164, 253) 244.3deg, rgb(175, 230, 240) 264.6deg, rgb(243, 241, 199) 287.41deg, rgb(233, 159, 126) 306.52deg, rgb(181, 249, 177) 334.39deg, rgb(174, 167, 248) 360.63deg) 1 / 1 / 0 stretch;">
+                            </div>
+                           
+                        </div>
+                    </ng-container>
+                   
+                </ng-container>
+
+                <ng-container *ngIf="AugumentSuggestiontier3.augument_selected.length<3">
+                <div data-tippy-trigger-hover="">
+                    <div class="s8">
+                        <div class="s9"><img (click)="SelectAugumentByTier(3);OpenSelection()"
+                                src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/16-plus-add.svg"
+                                alt="Add new item" class="s10"></div>
+                    </div>
+                </div>
+                </ng-container>
+
+                <ng-container *ngIf="AugumentSuggestiontier3.augument_selected.length>0">
+                    <img class="ss11" src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/delete.svg"
+                alt="delete" data-tippy-trigger-hover="" (click)="DeleteAllSelection(3)">
+                </ng-container>
+                
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="f1">
+    <div class="f2">
+        <div class="f3"><button type="button" (click)="SaveData()" class="f4"><span class="f5">Save</span></button></div>
+    </div>
+</div>
+<div class="m1" [style]="OpenSelectAugument()">
+    <div class="m2"></div>
+    <div class="m3">
+        <div class="m4">
+            <div class="m5">
+                <div class="m6">
+                    <div class="m7">Tier {{Tier}}: Choose 1 to 3 Augments</div>
+                    <div class="m8">
+
+                        <div class="m14">
+                            <ng-template ngFor let-augment [ngForOf]="AugumentListByTier">
+                                <div class="m15" data-tippy-trigger-hover="">
+                                    <div><img class="m16" alt="Young and Wild and Free" loading="lazy"
+                                            data-loaded="true" (click)="SelectAugument(augment.name,augment.level)"
+                                            [src]="GetUrlAugument(augment.icon,augment.level)"
+                                            [style]="ChangeStyleWhenSelect(augment.name,augment.level)">
+                                    </div>
+
+                                </div>
+                            </ng-template>
+                        </div>
+
+                    </div>
+                   
+                    <button class="m25"><img
+                            src="https://cdn.mobalytics.gg/assets/common/icons/system-icons/16-close.svg"
+                            alt="close icon" class="m26" (click)="OpenSelection()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

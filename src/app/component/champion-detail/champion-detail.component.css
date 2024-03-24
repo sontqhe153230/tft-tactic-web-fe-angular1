@@ -1,0 +1,522 @@
+.container {
+    max-width: 100rem;
+    width: 100%;
+    flex: 1 1 100%;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.champion-card {
+    padding: 8px;
+    min-width: 300px;
+    flex: 1 1 32%;
+    row-gap: 20px;
+}
+
+.ability {
+    padding: 8px;
+    flex: 1 1 34%;
+}
+
+.stats {
+    padding: 8px;
+    flex: 1 1 34%;
+}
+
+.synergies {
+    padding: 0.8rem;
+    flex: 1 1 68%;
+}
+
+.trails {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.card-detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1.6rem;
+    background-color: rgb(35, 30, 76);
+    border: 1px solid rgb(59, 45, 105);
+    border-radius: 4px;
+    box-shadow: rgb(21 11 37 / 50%) 0px 2px 10px 0px;
+    overflow: hidden;
+    height: 17.5rem;
+    transition: box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+}
+
+.card {
+    padding: 1.2rem;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer {
+    font: 700 1.6rem / 2.4rem Roboto, sans-serif;
+    letter-spacing: 0.015rem;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(59, 45, 105);
+    padding: 1rem 1.2rem;
+    color: rgb(255, 255, 255);
+}
+
+.trail-image img {
+    width: 1.6rem;
+    height: 1.6rem;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(44%) saturate(341%) hue-rotate(2deg) brightness(89%) contrast(91%);
+}
+
+.trail-image {
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    background: rgb(59, 45, 105);
+    border-radius: 50%;
+}
+
+.left {
+    float: left;
+}
+
+.trail-item {
+    font: 500 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+}
+
+.right {
+    float: right;
+}
+
+.ability .content {
+    position: relative;
+    min-width: 20rem;
+    border-radius: 0.6rem;
+    box-shadow: rgb(21 11 37 / 50%) 0px 2px 10px 0px;
+    background-color: #2c274f;
+    border: 1px solid #26204a;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ability header {
+    font: 500 1.2rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.skill-name p {
+    font: 700 1.6rem / 2.4rem Roboto, sans-serif;
+    letter-spacing: 0.015rem;
+    color: white;
+}
+
+.img-skill {
+    flex: 0 0 4rem;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1.2rem;
+    border: solid 1px plum;
+}
+
+.ability .skill-description {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    display: inline-block;
+    vertical-align: middle;
+    color: #8890b5;
+}
+
+.ability .ability-details .ability-stat .stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ability-type {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    color: #aaabca;
+    text-transform: capitalize;
+}
+
+.ability-stat {
+    font: 500 1.4rem / 2rem Roboto, sans-serif;
+    color: white;
+}
+
+.stat {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.stats-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: 20rem;
+    border-radius: 0.6rem;
+    box-shadow: rgb(21 11 37 / 50%) 0px 2px 10px 0px;
+    background-color: #2c274f;
+    border: 1px solid #382f66;
+    height: 100%;
+}
+
+.stat-header {
+    font: 500 1.2rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.stat-table {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.4rem
+}
+
+.heal {
+    flex: 1 1 54%;
+    max-width: 54%;
+}
+
+.damage {
+    flex: 1 1 54%;
+    max-width: 54%;
+}
+
+.armor {
+    flex: 1 1 23%;
+}
+
+.mr {
+    flex: 1 1 23%;
+}
+
+.mana {
+    flex: 1 1 auto;
+}
+
+.speed {
+    flex: 1 1 23%;
+}
+
+.range {
+    flex: 1 1 23%;
+}
+
+.dps {
+    flex: 1 1 54%;
+    max-width: 54%;
+}
+
+.heal .header,
+.armor .header,
+.mr .header,
+.damage .header,
+.speed .header,
+.dps .header,
+.mana .header,
+.range .header {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    color: #aaabca;
+}
+
+.stat-index {
+    font: 250 1.2rem / 2rem Roboto, sans-serif;
+    color: white;
+    margin-top: 1rem;
+}
+
+.heal-stat,
+.armor-stat,
+.mr-stat,
+.damage-stat,
+.speed-stat,
+.dps-stat,
+.mana-stat {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height: 2rem;
+}
+
+.synergies-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: 20rem;
+    border-radius: 0.6rem;
+    box-shadow: rgb(21 11 37 / 50%) 0px 2px 10px 0px;
+    background-color: #2c274f;
+    border: 1px solid #382f66;
+}
+
+.content-body {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    color: white;
+    padding: 1.2rem 1.2rem 1.6rem;
+}
+
+.trails-container {
+    display: flex;
+    flex: 1 1 100%;
+}
+
+.relative-champion {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 100%;
+    padding-top: 1rem;
+}
+
+.trails-symbols {
+    font: 500 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 9rem;
+    flex: 0 0 9rem;
+    margin-right: 2rem;
+}
+
+.trail-img {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    margin: 0px 1.2rem 0.8rem;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(44%) saturate(341%) hue-rotate(2deg) brightness(89%) contrast(91%);
+}
+
+.trails-info {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    display: inline-block;
+    vertical-align: middle;
+    color: #8890b5;
+    --chosen-synergy: #bf3cd5;
+}
+
+.set-index {
+    font: 500 1.4rem / 2rem Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    background: rgb(58, 50, 97);
+    margin-right: 0.8rem;
+}
+
+.synergies-head {
+    font: 500 1.2rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.set-detail {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    color: rgb(255, 255, 255);
+}
+
+.trails-content {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.trails-group {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.trails-description {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 1rem;
+    flex: 1 1 60%;
+}
+
+.icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    position: relative;
+}
+
+.icon-img img {
+    display: block;
+    width: 44%;
+    height: 100%;
+    border-radius: 50%;
+    transform: scale(1.15);
+}
+
+.trails-icon-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -4px;
+    left: 18%;
+    width: 22px;
+    height: 22px;
+    background: rgb(59, 45, 105);
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 10px 20px 0px;
+    transform: translate(-150%, 0px);
+}
+
+.trails-icon-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -4px;
+    left: 23%;
+    width: 22px;
+    height: 22px;
+    background: rgb(59, 45, 105);
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 10px 20px 0px;
+    transform: translate(50%, 0px);
+}
+
+.trails-icon-mid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -4px;
+    left: 20%;
+    width: 22px;
+    height: 22px;
+    background: rgb(59, 45, 105);
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 10px 20px 0px;
+    transform: translate(-50%, 0px);
+}
+
+.trails-icon {
+    display: block;
+    width: 15px;
+    height: 15px;
+    filter: brightness(0) saturate(100%) invert(92%) sepia(58%) saturate(2719%) hue-rotate(318deg) brightness(94%) contrast(102%);
+}
+
+.disable {
+    display: none
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }

@@ -58,6 +58,29 @@ export class TeamCompGuideComponent {
 
     });
   }
+
+  imageLoaded = false
+  onImageLoad() {
+    this.imageLoaded = true; 
+    // Called when the image has finished loading
+  }
+
+  ShowDiplayLoader(){
+    if(this.imageLoaded){
+      
+      return "display:none;"
+    } 
+   
+    return "display:block;"
+  }
+  ShowDiplay(){
+    if(this.imageLoaded){
+      
+      return "display:block;"
+    } 
+    
+    return "display:none;"
+  }
   GetBackGround() {
     var number = Number(this.id);
     var teamcomp = this.TeamComp.find(x => x.idComp == number);
@@ -114,18 +137,26 @@ export class TeamCompGuideComponent {
       let ChampionList: Champion[] = [];
       let teamcomp: TeamComp;
       var headliner = "";
+      var HaveEmblem:string[]=[]
       this.teamcompService.getTeamCompById(id).subscribe(data => {
         data.fomation[2].map.forEach(element => {
           if (element.data.headliner != "") {
             headliner = element.data.headliner;
           }
-
+          if(element.data.item.length>0){
+            element.data.item.forEach(item=>{
+              let itemCheck=this.ItemList.find(x=>x.name==item);
+              if(itemCheck?.trait!=null){
+                HaveEmblem.push(itemCheck?.trait);
+              }
+            })
+          }
         })
       });
       this.teamcompService.getChampionByTeamCompId(id, "late").subscribe(data => {
         ChampionList = data;
         let SynergyActiveList: SynergyActive;
-        SynergyActiveList = this.countDuplicates(ChampionList, headliner, id);
+        SynergyActiveList = this.countDuplicates(ChampionList, headliner, id,HaveEmblem);
 
 
       });
@@ -143,7 +174,7 @@ export class TeamCompGuideComponent {
     return s;
   }
   
-  countDuplicates(data: Champion[], headliner: string, TeamCompId: number): SynergyActive {
+  countDuplicates(data: Champion[], headliner: string, TeamCompId: number,emblem:string[]): SynergyActive {
     const synergyActive: SynergyActive = { Synergy: {}, headliner: "", TeamCompId: 0 };
 
     // Count duplicates
@@ -164,6 +195,16 @@ export class TeamCompGuideComponent {
         });
       }
     });
+    emblem.forEach(item=>{
+      if (synergyActive.Synergy[item] !== undefined) {
+        synergyActive.Synergy[item]++;
+      }
+      else {
+        // If trait does not exist in Synergy, initialize it with 1
+        synergyActive.Synergy[item] = 1;
+      }
+    })
+
     if (synergyActive.Synergy[headliner] !== undefined) {
       synergyActive.Synergy[headliner]++;
     } else if (synergyActive.Synergy[headliner] !== undefined) {
@@ -363,12 +404,20 @@ export class TeamCompGuideComponent {
       let ChampionList: Champion[] = [];
       let teamcomp: TeamComp;
       var headliner = "";
+      var HaveEmblem:string[]=[]
       this.teamcompService.getTeamCompById(id).subscribe(data => {
         data.fomation[type].map.forEach(element => {
           if (element.data.headliner != "") {
             headliner = element.data.headliner;
           }
-
+          if(element.data.item.length>0){
+            element.data.item.forEach(item=>{
+              let itemCheck=this.ItemList.find(x=>x.name==item);
+              if(itemCheck?.trait!=null){
+                HaveEmblem.push(itemCheck?.trait);
+              }
+            })
+          }
         })
       });
       var t = "";
@@ -383,7 +432,7 @@ export class TeamCompGuideComponent {
         ChampionList = data;
 
         let SynergyActiveList: SynergyActive;
-        SynergyActiveList = this.countDuplicates2(ChampionList, headliner, type);
+        SynergyActiveList = this.countDuplicates2(ChampionList, headliner, type,HaveEmblem);
 
 
       });
@@ -401,7 +450,7 @@ export class TeamCompGuideComponent {
     }
     return s;
   }
-  countDuplicates2(data: Champion[], headliner: string, type: number): SynergyActive {
+  countDuplicates2(data: Champion[], headliner: string, type: number,emblem:string[]): SynergyActive {
     const synergyActive: SynergyActive = { Synergy: {}, headliner: "", TeamCompId: 0 };
 
     // Count duplicates
@@ -422,6 +471,16 @@ export class TeamCompGuideComponent {
         });
       }
     });
+
+    emblem.forEach(item=>{
+      if (synergyActive.Synergy[item] !== undefined) {
+        synergyActive.Synergy[item]++;
+      }
+      else {
+        // If trait does not exist in Synergy, initialize it with 1
+        synergyActive.Synergy[item] = 1;
+      }
+    })
     if (synergyActive.Synergy[headliner] !== undefined) {
       synergyActive.Synergy[headliner]++;
     } else if (synergyActive.Synergy[headliner] !== undefined) {

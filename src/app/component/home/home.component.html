@@ -2,7 +2,8 @@
     <h1>TFT Meta Comps in Set 10</h1>
 
 </div>
-<div class="container">
+<div id="loader"*ngIf="!imageLoaded" [style]="ShowDiplayLoader()"></div>
+<div class="container" [style]="ShowDiplay()">
     <div class="search-bar">
         <div class="search-input">
             <input type="text" placeholder="search" (keyup)="searchInputKeyUp($event)">
@@ -68,7 +69,7 @@
                                                     [ngStyle]="{'border':getBorderSet(map.data.champion_id)}">
                                                     <span>
                                                         <img [src]="GetUrlOfChampionIcon(map.data.champion_id)"
-                                                            alt="Illaoi" loading="lazy" class="m-0">
+                                                            alt="Illaoi" loading="lazy"(load)="onImageLoad()" class="m-0">
                                                     </span>
                                                 </div>
                                                 <ng-container *ngIf="map.data.headliner !== '' ">
@@ -90,7 +91,7 @@
                                                 <div class="champion8">
                                                     <img class="champion9" alt="dragons-claw" loading="lazy"
                                                         style="opacity: 1; background: transparent;" data-loaded="true"
-                                                        [src]="GetItemById(map.data.item[0])">
+                                                        [src]="GetItemById(map.data.item[0])" >
                                                     <ng-container *ngIf="map.data.item && map.data.item.length > 1">
                                                         <img class="champion9" alt="evenshroud" loading="lazy"
                                                             style="opacity: 1; background: transparent;"

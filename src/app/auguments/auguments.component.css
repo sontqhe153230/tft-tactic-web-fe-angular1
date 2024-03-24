@@ -1,0 +1,223 @@
+.c1 {
+    margin: 2rem 0px;
+}
+
+.c2 {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    margin-bottom: 1.2rem;
+    color: #8890b5;
+}
+
+.c3 {
+    overflow-x: auto;
+}
+
+.c4 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: white;
+}
+
+
+.c5 {
+    letter-spacing: 0.025rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 1px solid #392b68;
+    z-index: 0;
+    height: 4rem;
+    background: #211d41;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 0px 2.8rem;
+    margin: 0px -1px;
+    transition: all 0.2s ease 0s;
+}
+
+.c6 {
+    transition: opacity 0.4s ease 0s;
+    display: block;
+    overflow: hidden;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+}
+
+.c7 {
+    display: grid;
+    gap: 1.5rem;
+    -webkit-box-align: center;
+    align-items: center;
+    font: 400 1.6rem / 2.4rem Roboto, sans-serif;
+    letter-spacing: 0.015rem;
+    grid-template-columns: 20rem 10rem 25rem ;
+    padding: 1rem 3rem;
+    width: 100%;
+    background: #1d1546;
+    border-radius: 4px 4px 0px 0px;
+    color: #8890b5;
+}
+
+.c8:not(:last-child) {
+    border-bottom: none;
+}
+
+.c8 {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 20rem 10rem 25rem ;
+    padding: 2rem 3rem;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: #2e2a4f;
+    border: 1px solid #3b2d6a;
+}
+
+.c9 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: 20rem
+}
+
+.c10 {
+    transition: opacity 0.4s ease 0s;
+    display: block;
+    overflow: hidden;
+    height: 4.8rem;
+    width: 4.8rem;
+    border: 2px solid #f2bf43;
+    flex: 0 0 auto;
+}
+
+.c11 {
+    font: 400 1.6rem / 2.4rem Roboto, sans-serif;
+    letter-spacing: 0.015rem;
+    color: #ffffff;
+    margin-left: 2rem;
+}
+
+.c12 {
+    font: 400 1.4rem / 2rem Roboto, sans-serif;
+    letter-spacing: 0.025rem;
+    display: inline-block;
+    vertical-align: middle;
+    color: #8890b5;
+
+}
+
+.c13:first-child {
+    margin-top: 0px;
+}
+
+.c13 {
+    display: inline-block;
+    margin: 0.6rem 0px
+}
+
+.c14 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+.c15{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    
+}
+.ci-18{
+    color: #8890b5;
+}
+.ci-19{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+.ci-20{
+    filter: brightness(0%) invert(50%) sepia(60%) saturate(413%) hue-rotate(344deg) brightness(95%) contrast(86%);
+    width: 16px;
+    height: 16px;
+    margin-bottom: 15px;
+}
+.ci-21{
+    font: 500 1rem / 2rem Roboto, sans-serif;
+    color: #b3b4d0;
+    padding: 0px 4px;
+}
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}

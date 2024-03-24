@@ -4,6 +4,11 @@ import { TeamCompGuideComponent } from './team-comp-guide/team-comp-guide.compon
 import { TeamCompBuilderComponent } from './team-comp-builder/team-comp-builder.component';
 import { TemaCompGuideDescriptionComponent } from './tema-comp-guide-description/tema-comp-guide-description.component';
 import { PlanNoteComponent } from './component/plan-note/plan-note.component';
+import { ChampionComponent } from './component/champion/champion.component';
+import { ChampionDetailComponent } from './component/champion-detail/champion-detail.component';
+import { ItemComponent } from './component/item/item.component';
+import { AugumentsComponent } from './auguments/auguments.component';
+import { SelectAugumentComponent } from './select-augument/select-augument.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +40,26 @@ export const routes: Routes = [
     {
         path:'Note/:plan',
         component: PlanNoteComponent
+    },
+
+    {
+        path:'Champion',
+        component: ChampionComponent
+    },
+    {
+        path:'ChampionDetails/:id',
+        component: ChampionDetailComponent
+    },
+    {
+        path:'Items',
+        component: ItemComponent
+    },
+    {
+        path:'Auguments',
+        component: AugumentsComponent
+    },
+    {
+        path:'SelectAugument',
+        component:SelectAugumentComponent
     }
 ];

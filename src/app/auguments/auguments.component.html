@@ -1,0 +1,37 @@
+<div id="loader"*ngIf="!imageLoaded" [style]="ShowDiplayLoader()"></div>
+<div class="container" [style]="ShowDiplay()">
+    <header class="c1">
+
+        <div class="c3">
+            <div class="c4"><a (click)="selectLecel(1)" class="c5" >Tier 1</a><a class="c5"
+                (click)="selectLecel(2)">Tier 2</a><a class="c5"(click)="selectLecel(3)">Tier 3</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="c7 ">
+        <div>Auument</div>
+        <div>Tier</div>
+        <div>Augment Bonus</div>
+
+    </div>
+    <div class="c8 ">
+        <ng-template ngFor let-item [ngForOf]="getAugumentList()">
+
+            <div class="c9 "><img  [src]="GetUrlAugument(item.icon,item.level)"  class="c10" alt="adaptive-helm" 
+                    style="opacity: 1; background: transparent;" data-loaded="true" (load)="onImageLoad()">
+                <div class="c11">{{item.name}}</div>
+            </div>
+            <div class="c15">
+                <div class="ci-18">
+                    {{item.level}}
+                </div>
+            </div>
+            <div class="c12">
+                <p class="c13">{{item.description}}</p>
+            </div>
+           
+        </ng-template>
+    </div>
+</div>

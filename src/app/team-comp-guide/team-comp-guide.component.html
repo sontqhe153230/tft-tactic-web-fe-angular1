@@ -1,4 +1,5 @@
-<div class="guide">
+<div id="loader"*ngIf="!imageLoaded" [style]="ShowDiplayLoader()"></div>
+<div class="guide" [style]="ShowDiplay()">
     <div class="content">
         <div class="m-0">
             <div class="background" [style]="GetBackGround()">
@@ -33,9 +34,9 @@
                                         <div class="c14">
                                             <ng-container *ngIf="getSynergy()">
                                                 <ng-container *ngFor="let synergy of style">
-                                                    <div class="c15" data-tippy-trigger-hover=""><img
+                                                    <div class="c15" ><img
                                                             [src]="GetBadgeWithKeyValue(synergy.style,synergy.headliner)"
-                                                            alt="big-shot" class="c16">
+                                                            alt="big-shot" class="c16" (load)="onImageLoad()">
                                                         <div class="c17"><img [src]="GetTraitByName(synergy.name)"
                                                                 alt="Big Shot" class="c18"></div>
                                                         <div class="c19">
@@ -68,7 +69,7 @@
                                                     <ng-container
                                                         *ngFor="let i of [].constructor(7); let index = index">
                                                         <ng-container *ngIf="CheckPosition(1,index)==true">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -128,7 +129,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,1,0)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,1,0)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -144,7 +145,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,1,1)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,1,1)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -159,7 +160,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,1,2)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,1,2)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -175,7 +176,7 @@
                                                             </div>
                                                         </ng-container>
                                                         <ng-container *ngIf="CheckPosition(1,index)==false">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -236,7 +237,7 @@
                                                     <ng-container
                                                         *ngFor="let i of [].constructor(7); let index = index">
                                                         <ng-container *ngIf="CheckPosition(2,index)==true">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -296,7 +297,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,2,0)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,2,0)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -312,7 +313,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,2,1)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,2,1)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -327,7 +328,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,2,2)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,2,2)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -343,7 +344,7 @@
                                                             </div>
                                                         </ng-container>
                                                         <ng-container *ngIf="CheckPosition(2,index)==false">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -404,7 +405,7 @@
                                                     <ng-container
                                                         *ngFor="let i of [].constructor(7); let index = index">
                                                         <ng-container *ngIf="CheckPosition(3,index)==true">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -464,7 +465,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,3,0)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,3,0)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -480,7 +481,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,3,1)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,3,1)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -495,7 +496,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,3,2)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,3,2)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -511,7 +512,7 @@
                                                             </div>
                                                         </ng-container>
                                                         <ng-container *ngIf="CheckPosition(3,index)==false">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -572,7 +573,7 @@
                                                     <ng-container
                                                         *ngFor="let i of [].constructor(7); let index = index">
                                                         <ng-container *ngIf="CheckPosition(4,index)==true">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -632,7 +633,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,4,0)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,4,0)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -648,7 +649,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,4,1)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,4,1)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -663,7 +664,7 @@
                                                                     <ng-container *ngIf="GetItemById(index,4,2)!=''">
                                                                         <div class="f2-item-i-item">
                                                                             <div class="f2-item-i-item-1"
-                                                                                data-tippy-trigger-hover="">
+                                                                                >
                                                                                 <div><img [src]="GetItemById(index,4,2)"
                                                                                         class="f2-item-i-item-1-img"
                                                                                         alt="dragons-claw"
@@ -679,7 +680,7 @@
                                                             </div>
                                                         </ng-container>
                                                         <ng-container *ngIf="CheckPosition(4,index)==false">
-                                                            <div class="f2-item" data-tippy-trigger-hover="">
+                                                            <div class="f2-item" >
                                                                 <div class="f2-item-c"><svg width="65px" height="71.5px"
                                                                         viewBox="0 0 84 96" class="f2-item-c-span">
                                                                         <defs>
@@ -755,7 +756,7 @@
                                         <div class="f2-5">
                                             <div class="f2-5-1">
                                                 <div class="f2-5-1-text">How to Play</div>
-                                                <div class="f2-5-1-playStyle" data-tippy-trigger-hover="">Fast 8</div>
+                                                <div class="f2-5-1-playStyle" >Fast 8</div>
                                             </div>
                                             <div class="f2-5-2">{{GetHowToPlay()}}</div>
                                         </div>
@@ -814,7 +815,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(1,index,0)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -882,7 +883,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,1,0,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,0,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -898,7 +899,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,1,1,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,1,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -914,7 +915,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,1,2,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,2,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -933,7 +934,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(1,index,0)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1004,7 +1005,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(2,index,0)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1072,7 +1073,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,2,0,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,0,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1088,7 +1089,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,2,1,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,2,1,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1104,7 +1105,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,2,2,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,2,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1123,7 +1124,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(2,index,0)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1194,7 +1195,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(3,index,0)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1262,7 +1263,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,3,0,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,3,0,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1278,7 +1279,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,3,1,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,3,1,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1294,7 +1295,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,3,2,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,2,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1313,7 +1314,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(3,index,0)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1384,7 +1385,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(4,index,0)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1452,7 +1453,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,4,0,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,4,0,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1468,7 +1469,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,4,1,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,4,1,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1484,7 +1485,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,4,2,0)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,4,2,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1503,7 +1504,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(4,index,0)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1632,7 +1633,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(1,index,1)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1700,7 +1701,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,1,0,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,0,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1716,7 +1717,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,1,1,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,1,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1732,7 +1733,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,1,2,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,2,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1751,7 +1752,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(1,index,1)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1822,7 +1823,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(2,index,1)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -1890,7 +1891,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,2,0,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,0,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1906,7 +1907,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,2,1,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,2,1,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1922,7 +1923,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,2,2,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,2,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -1941,7 +1942,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(2,index,1)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -2012,7 +2013,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(3,index,1)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -2080,7 +2081,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,3,0,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,3,0,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -2096,7 +2097,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,3,1,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,3,1,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -2112,7 +2113,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,3,2,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,1,2,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -2131,7 +2132,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(3,index,1)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -2202,7 +2203,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(4,index,1)==true">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -2270,7 +2271,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,4,0,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,4,0,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -2286,7 +2287,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,4,1,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,4,1,0)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -2302,7 +2303,7 @@
                                                                                     *ngIf="GetItemByIdByForm(index,4,2,1)!=''">
                                                                                     <div class="f2-item-i-item">
                                                                                         <div class="f2-item-i-item-1"
-                                                                                            data-tippy-trigger-hover="">
+                                                                                            >
                                                                                             <div><img
                                                                                                     [src]="GetItemByIdByForm(index,4,2,1)"
                                                                                                     class="f2-item-i-item-1-img"
@@ -2321,7 +2322,7 @@
                                                                     <ng-container
                                                                         *ngIf="CheckPositionOfForm(4,index,1)==false">
                                                                         <div class="f2-item"
-                                                                            data-tippy-trigger-hover="">
+                                                                            >
                                                                             <div class="f2-item-c"><svg width="38px"
                                                                                     height="42px" viewBox="0 0 84 96"
                                                                                     class="f2-item-c-span">
@@ -2464,7 +2465,7 @@
                                     <div class="championItem">
                                         <ng-template ngFor let-champion [ngForOf]="GetChampionHaveItemFormLate()">
                                             <div class="ci-1"><a class="ci-2">
-                                                    <div class="ci-3" data-tippy-trigger-hover="">
+                                                    <div class="ci-3" >
                                                         <div class="ci-4">
                                                             <div class="ci-5"
                                                                 [ngStyle]="{'border': getBorderSet(champion.ChampionId)}"
@@ -2492,7 +2493,7 @@
                                                     <ng-container
                                                         *ngFor="let i of [].constructor(champion.item.length); let index = index">
                                                         <div class="ci-13">
-                                                            <div class="ci-14" data-tippy-trigger-hover="">
+                                                            <div class="ci-14" >
                                                                 <div><img
                                                                         [src]="getItem(champion.item[index])"
                                                                         class="ci-15" alt="deathblade" loading="lazy"
@@ -2518,7 +2519,7 @@
                                                             </div>
                                                             <div class="ci-22">
                                                                 <ng-container *ngFor="let i of [].constructor(2); let itemIndex = index">
-                                                                    <div class="ci-23" data-tippy-trigger-hover="">
+                                                                    <div class="ci-23" >
                                                                         <div><img
                                                                                 [src]="GetComponent(champion.item[index],itemIndex)"
                                                                                 class="ci-24" alt="bf-sword" loading="lazy"

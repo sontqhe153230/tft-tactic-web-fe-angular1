@@ -59,7 +59,28 @@ export class HomeComponent implements OnInit {
       this.AugumentList = data;
     });
   }
+  imageLoaded = false
+  onImageLoad() {
+    this.imageLoaded = true; 
+   // Called when the image has finished loading
+  }
 
+  ShowDiplayLoader(){
+    if(this.imageLoaded){
+     
+      return "display:none;"
+    } 
+   
+    return "display:block;"
+  }
+  ShowDiplay(){
+    if(this.imageLoaded){
+      
+      return "display:block;"
+    } 
+   
+    return "display:none;"
+  }
   searchInputKeyUp(event: any): void {
     let userData = event.target.value;
     let searchWrapper = document.querySelector('.search-input') as HTMLElement;
@@ -216,7 +237,7 @@ export class HomeComponent implements OnInit {
     }
   }
   GetItemById(itemId: string) {
-    let name = itemId.toLocaleLowerCase().replaceAll(" ", "-").replaceAll("'", "");
+    let name = itemId.toLocaleLowerCase().replaceAll(" ", "-").replaceAll("'", "").replaceAll("/", "");
     return "../../../assets/Item/Combined Items/" + name + ".png";
   }
   getBackgroundImageUrl(id: number) {
@@ -276,18 +297,27 @@ export class HomeComponent implements OnInit {
       let ChampionList: Champion[] = [];
       let teamcomp: TeamComp;
       var headliner = "";
+      var HaveEmblem:string[]=[]
       this.teamcompService.getTeamCompById(id).subscribe(data => {
         data.fomation[2].map.forEach(element => {
           if (element.data.headliner != "") {
             headliner = element.data.headliner;
           }
-
+          if(element.data.item.length>0){
+            element.data.item.forEach(item=>{
+              let itemCheck=this.item.find(x=>x.name==item);
+              if(itemCheck?.trait!=null){
+                HaveEmblem.push(itemCheck?.trait);
+              }
+            })
+          }
         })
       });
       this.teamcompService.getChampionByTeamCompId(id,"late").subscribe(data => {
         ChampionList = data;
+        console.log(HaveEmblem);
         let SynergyActiveList: SynergyActive;
-        SynergyActiveList = this.countDuplicates(ChampionList, headliner, id);
+        SynergyActiveList = this.countDuplicates(ChampionList, headliner, id,HaveEmblem);
 
 
       });
@@ -308,7 +338,7 @@ export class HomeComponent implements OnInit {
 
 
   // Function to count duplicate classes and origins
-  countDuplicates(data: Champion[], headliner: string, TeamCompId: number): SynergyActive {
+  countDuplicates(data: Champion[], headliner: string, TeamCompId: number,emblem:string[]): SynergyActive {
     const synergyActive: SynergyActive = { Synergy: {}, headliner: "", TeamCompId: 0 };
 
     // Count duplicates
@@ -320,7 +350,6 @@ export class HomeComponent implements OnInit {
 
         });
       }
-
       // Count origins
       if (item.origins && Array.isArray(item.origins)) {
         item.origins.forEach(origin => {
@@ -329,6 +358,16 @@ export class HomeComponent implements OnInit {
         });
       }
     });
+    emblem.forEach(item=>{
+      if (synergyActive.Synergy[item] !== undefined) {
+        synergyActive.Synergy[item]++;
+      }
+      else {
+        // If trait does not exist in Synergy, initialize it with 1
+        synergyActive.Synergy[item] = 1;
+      }
+    })
+
     if (synergyActive.Synergy[headliner] !== undefined) {
       synergyActive.Synergy[headliner]++;
     } else if (synergyActive.Synergy[headliner] !== undefined) {

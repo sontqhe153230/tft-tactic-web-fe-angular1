@@ -1,0 +1,218 @@
+<div id="loader"*ngIf="!imageLoaded" [style]="ShowDiplayLoader()"></div>
+<div class="container" [style]="ShowDiplay()">
+    <div class="content">
+        <div class="champion-card" >
+            <a href="">
+                <div class="card-content">
+                    <div class="card-detail">
+                        <div class="card" [ngStyle]="{'background-image': getUrlChampion(championSelected!.id)}">
+                            <div class="trails">
+                                <div>
+                                    <ng-container *ngFor="let i of championSelected!.origins ">
+                                        <div class="trail-item ">
+    
+                                            <div class="trail-image ">
+                                                <img [src]="getUrlTrails(i)" (load)="onImageLoad()"  alt=" ">
+                                            </div>
+                                            <p>{{i.replace("Set10_","")}}</p>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngFor="let j of championSelected!.classes ">
+                                        <div class="trail-item ">
+    
+                                            <div class="trail-image ">
+                                                <img [src]="getUrlTrails(j)" (load)="onImageLoad()"  alt=" ">
+                                            </div>
+                                            <p>{{j.replace("Set10_","")}}</p>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="row right">
+                                <img src="../../assets/icon/coin.svg " alt=" ">
+                                <p class="mr-3">{{championSelected!.cost}}</p>
+                            </div>
+                            <div class="left">
+                                <p>{{championSelected!.name}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="ability" >
+            <div class="content">
+                <header>Ability</header>
+                <div class="ability-detail">
+                    <div class="ability-description d-flex">
+                        <img [src]="getUrlSkill(championSelected!.abilityName,championSelected!.id)" class="img-skill"  alt="">
+                        <div class="skill-detail">
+                            <div class="skill-name">
+                                <p>{{championSelected!.abilityName}}</p>
+                            </div>
+                            <div class="skill-description">
+                                <p>{{championSelected!.abilityDescription}}</p>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="stats" >
+            <div class="stats-content">
+                <header class="stat-header">
+                    {{championSelected!.name}} stats
+                </header>
+                <div class="stat-table">
+                    <div class="heal">
+                        <p class="header">Heal</p>
+                        <div class="heal-stat">
+                            <svg width="14" height="14" viewBox="0 0 14 14" title="Health"><path fill="#20995D" d="M7 13.592L1.13 7c-1.345-1.517-1.345-3.908.055-5.425C2.585 0 4.9 0 6.3 1.575l.7.817.754-.817c1.4-1.575 3.715-1.575 5.115 0 1.346 1.517 1.346 3.908.054 5.425L7 13.592z"></path></svg>
+                            <p class="stat-index">{{championSelected!.health}}</p>
+                        </div>
+                    </div>
+                    <div class="armor">
+                        <p class="header">armor</p>
+                        <div class="armor-stat">
+                            <svg width="14" height="14" viewBox="0 0 14 14" title="Armor"><path fill="#F16F59" d="M.14.14h13.673v8.073c-1.213 2.66-3.5 4.574-6.813 5.647-3.313-1.073-5.6-2.987-6.86-5.647V.14zm1.633 1.633V7.84C2.8 9.8 4.527 11.247 7 12.133 9.473 11.2 11.2 9.8 12.227 7.84V1.773H1.773zM3.36 3.36h7.233v4.013c-.606 1.074-2.426 2.52-3.64 3.034-1.213-.514-3.033-1.96-3.64-3.034L3.36 3.36z"></path></svg>
+                            <p class="stat-index">{{championSelected!.armor}}</p>
+                        </div>
+                    </div>
+                    <div class="mr">
+                        <p class="header">mr</p>
+                        <div class="mr-stat">
+                            <svg width="14" height="14" viewBox="0 0 14 14" title="MR"><g fill="#CF8DD1"><path d="M7 10.127a3.127 3.127 0 100-6.254 3.127 3.127 0 000 6.254z"></path><path d="M13.86 7C13.86 3.22 10.78.14 7 .14 3.22.14.14 3.22.14 7c0 3.78 3.08 6.86 6.86 6.86 3.78 0 6.86-3.08 6.86-6.86zm-1.867 0c0 2.753-2.24 4.993-4.993 4.993S2.007 9.753 2.007 7 4.247 2.007 7 2.007 11.993 4.247 11.993 7z"></path></g></svg>
+                            <p class="stat-index">{{championSelected!.magicResist}}</p>
+                        </div>
+                    </div>
+                    <div class="damage">
+                        <p class="header">Damage</p>
+                        <div class="damage-stat">
+                            <svg width="14" height="14" viewBox="0 0 14 14" title="Damage"><path fill="#BD7E4C" d="M7.513.14h1.634v1.633L.14 10.92V7.607L7.513.14zM4.9 7.653L8.727 3.78s3.593 0 4.666-2.707c1.54 6.067-.42 13.067-10.453 12.74C4.2 12.46 5.087 9.567 4.9 7.653z"></path></svg>
+                            <p class="stat-index">{{championSelected!.attackDamage}}</p>
+                        </div>
+                    </div>
+                    <div class="speed">
+                        <p class="header">speed</p>
+                        <div class="speed-stat">
+                            <svg width="14" height="14" viewBox="0 0 14 14" title="Speed"><path fill="#F4C452" d="M.14 2.333V.14h8.54L6.533 2.333H.14zm0 2.8V2.94h5.74L3.733 5.133H.14zm0 .607v2.193h.84L3.127 5.74H.14zm9.893-5.6h1.634v1.633L.14 13.3v-3.267L10.033.14zm-.186 4.713L5.973 8.68a6.575 6.575 0 01-1.633 5.18c11.807.047 9.287-11.387 9.287-11.387-1.12 2.66-3.78 2.38-3.78 2.38z"></path></svg>
+                            <p class="stat-index">{{championSelected!.attackSpeed}}</p>
+                        </div>
+                    </div>
+                    <div class="range">
+                        <p class="header">range</p>
+                        <div class="range-stat">
+                            <p class="stat-index">{{championSelected!.attackRange}}</p>
+                        </div>
+                    </div>
+                    <div class="dps">
+                        <p class="header">Dps</p>
+                        <div class="dps-stat">
+                            <svg width="14" height="14" x="0px" y="0px" viewBox="0 0 76 89" xml:space="preserve" title="DPS"><switch><g><path fill="#fb4f4f" d="M76 78L76 8.2 59.8 32.7 53.2 14.6 46.4 35.1 0 8.2 29.4 52.3 10 58.6 27.5 67 0 78z"></path></g></switch></svg>
+                            <p class="stat-index">{{championSelected!.dps}}</p>
+                        </div>
+                    </div>
+                    <div class="mana">
+                        <p class="header">Mana</p>
+                        <div class="mana-stat">
+                            <svg width="14" height="14" viewBox="0 0 10 14" title="Mana"><path fill="#26C2F4" d="M5 13.86c-2.5 0-3.9-1.307-4.4-2.567C-.45 8.867 2.05 5.133 5 .14c2.95 4.993 5.5 8.727 4.4 11.153-.5 1.214-1.9 2.567-4.4 2.567z"></path></svg>
+                            <p class="stat-index">{{championSelected!.mana}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="synergies" >
+            <div class="synergies-content">
+                <header class="synergies-head">
+                    {{championSelected!.name}} SYNERGIES
+                </header>
+
+                <div class="content-body">
+                    <ng-container *ngFor="let l of RelariveChampion,let i=index">                     
+                            <div class="trails-content">
+                                <div class="trails-container">
+                                    <div class="trails-description">
+                                        <div class="trails-group">
+                                            <p class="trails-symbols">
+                                                <img [src]="getUrlTrails(l.trait)" class="trails-img" alt="">
+                                                <span>{{l.trait.replace("Set10_","")}}</span>
+                                            </p>
+                                            <div class="trails-info">
+                                                <p>{{GetDescriptionbyTrait(l.trait)?.description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                      
+                                        <ng-container *ngFor="let s of GetDescriptionbyTrait(l.trait)?.effects">
+                                            <div class="trails-set">
+                                                <div class="set-list d-flex">
+                                                    <p class="set-index" [ngStyle]="{'border':getBorderSet(s.style),
+                                                'background':getBackgroundSet(s.style)}">{{s.minUnits}}</p>
+                                                    <p class="set-detail">{{s.description}}</p>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="relative-champion">
+
+                                <div>
+                                    <ng-container *ngFor="let s of l.championRelative">
+
+                                        <a (click)="OnchangePage(s.id)" class="icon">
+                                            <div class="champion-icon">
+                                                <div class="icon-img">
+                                                    <span>
+                                                    <img [src]="GetIconUrl(s.id)" alt="">
+                                                     </span>
+                                                </div>
+                                                
+                                                    
+                                                    <div class="trails-icon-left">
+                                                        <img [src]="getUrlTrails(s.origins[0])" class="trails-icon" alt="">
+
+                                                    </div>
+
+                                                    <ng-container *ngFor="let t of s.classes">   
+                                                    <div class="trails-icon-right">
+                                                        <img [src]="getUrlTrails(s.classes[0])" class="trails-icon" alt="">
+
+                                                    </div>
+
+                                                    <ng-container *ngIf="s.classes[1]!=null">   
+                                                    <div class="trails-icon-mid" [ngClass]="{'disable':getUrlTrails(t[1])==null}">
+                                                        <img [src]="getUrlTrails(s.classes[1])" class="trails-icon" alt="">
+                                                    </div>
+                                                </ng-container>
+                                                </ng-container>
+                                            </div>
+
+                                        </a>
+                                    </ng-container>
+
+
+
+                                </div>
+
+                            </div>
+                        </ng-container>
+
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
